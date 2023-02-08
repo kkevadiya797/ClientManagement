@@ -1,10 +1,13 @@
 <div class="main-sidebar sidebar-style-2">
 	<aside id="sidebar-wrapper">
 		<div class="sidebar-brand">
-			<a href="index.html">Stisla</a>
+			@php
+					$settings = App\Models\Setting::first();
+			@endphp
+			<a href="index.html"><img src="{{ asset($settings->logo) }}" height="20" ></a>
 		</div>
 		<div class="sidebar-brand sidebar-brand-sm">
-			<a href="index.html">St</a>
+			<a href="index.html"><img src="{{ asset($settings->favicon) }}" height="22" ></a>
 		</div>
 		<ul class="sidebar-menu">
 			<li class="menu-header">Dashboard</li>

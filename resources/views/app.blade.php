@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{ config('app.name', 'Laravel') }} | @yield('pageTitle')</title>
+  @php
+      $setting = App\Models\Setting::first();
+  @endphp
+  <title>{{ $setting->system_title }} | @yield('pageTitle')</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <link rel="shortcut icon" href="{{ asset($setting->favicon) }}" type="image/x-icon">
 
   @include('layouts.css')
 

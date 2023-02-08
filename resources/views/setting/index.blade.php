@@ -29,7 +29,7 @@
 								<div class="col-md-6 col-12">
 									<div class="form-group">
 											<label for="url">URL <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="url" name="url" placeholder="Enter url" required>
+											<input type="text" class="form-control" value="{{ $settings->url }}" id="url" name="url" placeholder="Enter url" required>
 											@error('url')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -40,7 +40,7 @@
 								<div class="col-md-6 col-12">
 									<div class="form-group">
 											<label for="company_name">Company Name <span class="text-danger">*</span></label>
-											<input type="company_name" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" required/>
+											<input type="text" class="form-control" value="{{ $settings->company_name }}" id="company_name" name="company_name" placeholder="Enter company name" required/>
 											@error('company_name')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -53,7 +53,7 @@
 								<div class="col-md-6 col-12">
 									<div class="form-group">
 											<label for="system_title">System Title <span class="text-danger">*</span></label>
-											<input type="number" class="form-control" id="system_title" name="system_title" placeholder="Enter System Title" required/>
+											<input type="text" class="form-control" value="{{ $settings->system_title }}" id="system_title" name="system_title" placeholder="Enter System Title" required/>
 											@error('system_title')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -64,7 +64,7 @@
 								<div class="col-md-6 col-12">
 									<div class="form-group">
 											<label for="login_page_title">Login Page Title <span class="text-danger">*</span></label>
-											<input type="text" class="form-control" id="login_page_title" name="login_page_title" placeholder="Enter login page title" required/>
+											<input type="text" class="form-control" value="{{ $settings->login_page_title }}" id="login_page_title" name="login_page_title" placeholder="Enter login page title" required/>
 											@error('login_page_title')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -77,7 +77,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 											<label for="copyrights">Copyrights <span class="text-danger">*</span></label>
-											<textarea name="copyrights" id="copyrights" class="form-control"></textarea>
+											<textarea name="copyrights" id="copyrights" class="form-control">{{ $settings->copyrights }}</textarea>
 											@error('copyrights')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -89,56 +89,38 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-											<label for="profile">Profile Image</label>
+											<label for="favicon">Favicon Image</label>
 											<div class="row">
 												<div class="col-9">
-													<input type="file" class="form-control"  id="profile" name="profile" placeholder="profile" >
-													@error('profile')
+													<input type="file" class="form-control"  id="favicon" name="favicon" placeholder="favicon" >
+													<input type="hidden" class="form-control" value="{{ $settings->favicon }}" id="old_favicon" name="old_favicon" placeholder="old_favicon" >
+													@error('favicon')
 														<div class="invalid-feedback">
 															{{ $message }}
 														</div>
 													@enderror
 												</div>
 												<div class="col-2">
-													<img src="{{ asset('assets/img/stisla-fill.svg') }}" width="42" height="42">
+													<img src="{{ asset($settings->favicon) }}" width="42" height="42">
 												</div>
 											</div>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-											<label for="profile">Profile Image</label>
+											<label for="logo">Logo Image</label>
 											<div class="row">
-												<div class="col-9">
-													<input type="file" class="form-control"  id="profile" name="profile" placeholder="profile" >
-													@error('profile')
+												<div class="col-12">
+													<input type="file" class="form-control"  id="logo" name="logo" placeholder="logo" >
+													<input type="hidden" class="form-control" value="{{ $settings->logo }}" id="old_logo" name="old_logo" placeholder="old_logo" >
+													@error('logo')
 														<div class="invalid-feedback">
 															{{ $message }}
 														</div>
 													@enderror
 												</div>
-												<div class="col-2">
-													<img src="{{ asset('assets/img/stisla-fill.svg') }}" width="42" height="42">
-												</div>
-											</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-											<label for="profile">Profile Image</label>
-											<div class="row">
-												<div class="col-9">
-													<input type="file" class="form-control"  id="profile" name="profile" placeholder="profile" >
-													@error('profile')
-														<div class="invalid-feedback">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
-												<div class="col-2">
-													<img src="{{ asset('assets/img/stisla-fill.svg') }}" width="42" height="42">
+												<div class="col-12 mt-2">
+													<img src="{{ asset($settings->logo) }}" height="42">
 												</div>
 											</div>
 									</div>
